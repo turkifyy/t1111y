@@ -1,0 +1,84 @@
+.video-actions {
+  position: absolute;
+  right: 15px;
+  bottom: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  z-index: var(--z-index-actions, 5);
+}
+
+.action-btn {
+  background: none;
+  border: none;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  padding: 8px;
+  min-width: 60px;
+  transition: all var(--transition-speed);
+  will-change: transform;
+  position: relative;
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--secondary-color);
+    outline-offset: 2px;
+    border-radius: 8px;
+  }
+}
+
+.action-icon {
+  width: var(--action-btn-size);
+  height: var(--action-btn-size);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 5px;
+  background: rgba(255, 255, 255, 0.1);
+  transition: all var(--transition-speed);
+  will-change: transform, background-color;
+
+  @supports (backdrop-filter: blur(5px)) or (-webkit-backdrop-filter: blur(5px)) {
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+  }
+}
+
+.like-btn {
+  &.active {
+    .action-icon {
+      background: rgba(254, 44, 85, 0.4);
+      color: var(--primary-color);
+      animation: pulse 0.5s ease;
+    }
+
+    &::after {
+      content: '+1';
+      position: absolute;
+      top: -15px;
+      right: 0;
+      color: var(--primary-color);
+      font-weight: bold;
+      animation: floatUp 1s ease-out;
+    }
+  }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+@keyframes floatUp {
+  0% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-30px); }
+}
