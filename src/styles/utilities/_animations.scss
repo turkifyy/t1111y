@@ -1,0 +1,55 @@
+// الحركات الأساسية
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translate3d(0, 20px, 0); }
+  to { transform: translate3d(0, 0, 0); }
+}
+
+@keyframes slideDown {
+  from { transform: translate3d(0, -20px, 0); }
+  to { transform: translate3d(0, 0, 0); }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+// فئات الحركات
+.animate {
+  &-fadeIn {
+    animation: fadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    will-change: opacity;
+  }
+
+  &-slideUp {
+    animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    will-change: transform;
+  }
+
+  &-slideDown {
+    animation: slideDown 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    will-change: transform;
+  }
+
+  &-scaleIn {
+    animation: scaleIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    will-change: transform, opacity;
+  }
+}
+
+// دعم تقليل الحركات
+@media (prefers-reduced-motion: reduce) {
+  .animate {
+    &-fadeIn,
+    &-slideUp,
+    &-slideDown,
+    &-scaleIn {
+      animation: fadeIn 0.4s ease forwards !important;
+    }
+  }
+}
