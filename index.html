@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="description" content="Short video platform with AI content creator studio">
+    <meta name="description" content="ClipNow - Create and share short videos with AI tools. Discover trending clips, follow creators, and grow your audience.">
     <meta name="theme-color" content="#000000">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -20,18 +20,20 @@
     
     <!-- PWA Manifest -->
     <link rel="manifest" href="/manifest.webmanifest">
-        
+    
+    <!-- Firebase SDK (Dynamic Loading Recommended) -->
+    <script type="module" src="/src/firebase-loader.js"></script>
 </head>
 <body>
     <!-- Connection Banner -->
-    <div class="connection-banner" id="connectionBanner">
+    <div class="connection-banner" id="connectionBanner" aria-live="polite">
         <i class="fas fa-wifi"></i>
         <span>No internet connection</span>
     </div>
     
     <!-- Top Navigation (Header) -->
     <header class="top-nav">
-        <button class="header-btn" id="searchBtn" aria-label="Search">
+        <button class="header-btn" id="searchBtn" aria-label="Search for videos and creators">
             <i class="fas fa-search"></i>
         </button>
         
@@ -40,11 +42,10 @@
             <span>ClipNow</span>
         </a>
         
-        <button class="header-btn" id="loginBtn" aria-label="Login">
+        <button class="header-btn" id="loginBtn" aria-label="Login to your account">
             <i class="fas fa-user"></i>
         </button>
     </header>
-
     <!-- Main Content -->
     <main class="main-container">
         <!-- Video Feed (Main Page) -->
