@@ -1,0 +1,25 @@
+body {
+  position: relative;
+  background-color: var(--bg-color);
+  overscroll-behavior: contain;
+  touch-action: pan-y;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  will-change: scroll-position;
+}
+
+[aria-hidden="true"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: none !important;
+}
+
+main {
+  flex: 1;
+  position: relative;
+}
