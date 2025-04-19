@@ -1,0 +1,154 @@
+// src/styles/layout/_grid.scss
+/**
+ * نظام الجريد المتكامل للمنصة
+ * يدعم:
+ * - تخطيطات الفيديو المتجاوبة
+ * - إدارة المسافات التلقائية
+ * - تكيف مع جميع أحجام الشاشات
+ * - تحسين أداء التحميل
+ */
+
+// 1. إعدادات الأساس
+$grid-gutter: 1rem !default;
+$grid-columns: 12 !default;
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+) !default;
+
+// 2. Mixins الأساسية
+@mixin make-container() {
+  width: 100%;
+  padding-right: $grid-gutter * 0.5;
+  padding-left: $grid-gutter * 0.5;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@mixin make-row() {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -$grid-gutter * 0.5;
+  margin-left: -$grid-gutter * 0.5;
+}
+
+@mixin make-col-ready() {
+  position: relative;
+  width: 100%;
+  padding-right: $grid-gutter * 0.5;
+  padding-left: $grid-gutter * 0.5;
+}
+
+// 3. نظام الفيديو الرئيسي
+.video-grid-container {
+  @include make-container();
+  
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.video-grid-row {
+  @include make-row();
+  
+  &.no-gutters {
+    margin-right: 0;
+    margin-left: 0;
+    
+    > .video-col {
+      padding-right: 0;
+      padding-left: 0;
+    }
+  }
+}
+
+.video-col {
+  @include make-col-ready();
+  
+  flex: 0 0 100%;
+  max-width: 100%;
+  margin-bottom: $grid-gutter;
+
+  // تنسيقات خاصة ببطاقات الفيديو
+  .video-card {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #161616;
+    transition: transform 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-5px);
+    }
+  }
+}
+
+// 4. أنماط الاستجابة
+@each $breakpoint, $width in $grid-breakpoints {
+  @media (min-width: $width) {
+    @for $i from 1 through $grid-columns {
+      .video-col-#{$breakpoint}-#{$i} {
+        flex: 0 0 percentage($i / $grid-columns);
+        max-width: percentage($i / $grid-columns);
+      }
+    }
+    
+    .video-col-#{$breakpoint}-auto {
+      flex: 0 0 auto;
+      width: auto;
+      max-width: 100%;
+    }
+  }
+}
+
+// 5. تخطيط الصفحة الرئيسية
+.main-video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: $grid-gutter;
+  
+  @media (min-width: map-get($grid-breakpoints, lg)) {
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  }
+}
+
+// 6. تخطيط صفحة المشاهدة
+.watch-page-grid {
+  display: grid;
+  grid-template-areas: 
+    "video player"
+    "related related";
+  grid-template-columns: 1fr;
+  
+  @media (min-width: map-get($grid-breakpoints, md)) {
+    grid-template-areas: 
+      "player related";
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+// 7. فئات مساعدة
+.grid-auto-flow {
+  grid-auto-flow: row dense;
+}
+
+.grid-gap-0 { gap: 0 !important; }
+.grid-gap-1 { gap: $grid-gutter * 0.25 !important; }
+.grid-gap-2 { gap: $grid-gutter * 0.5 !important; }
+.grid-gap-3 { gap: $grid-gutter !important; }
+.grid-gap-4 { gap: $grid-gutter * 1.5 !important; }
+.grid-gap-5 { gap: $grid-gutter * 3 !important; }
+
+// 8. تحسينات للأداء
+.video-grid {
+  will-change: transform;
+  backface-visibility: hidden;
+  perspective: 1000px;
+  
+  > * {
+    transform: translateZ(0);
+  }
+}
