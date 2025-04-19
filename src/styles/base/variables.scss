@@ -1,0 +1,28 @@
+:root {
+  // ===== Colors =====
+  --primary-color: #FE2C55;
+  --secondary-color: #25F4EE;
+  --creator-primary: #9147FF;
+  
+  --bg-color: #000000;
+  --card-bg: #161616;
+  
+  --text-color: #FFFFFF;
+  --text-secondary: hsl(0, 0%, 80%);
+  --border-color: hsl(0, 0%, 20%);
+
+  // ===== Sizes =====
+  --action-btn-size: 48px;
+  --header-height: 60px;
+  --nav-height: 65px;
+  --safe-area-inset-bottom: 0px;
+  
+  // ===== Effects =====
+  --transition-speed: 0.3s;
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --border-radius: 8px;
+
+  // ===== Fonts =====
+  --font-family: 'Poppins', sans-serif;
+  --font-size-base: 16px;
+}
