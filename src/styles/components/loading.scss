@@ -1,0 +1,65 @@
+.loading-container {
+  --spinner-size: 30px;
+  --spinner-thickness: 3px;
+  --spinner-speed: 1s;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 15px;
+  padding: 20px;
+  text-align: center;
+  aria-live: "polite";
+}
+
+.loading-spinner {
+  border: var(--spinner-thickness) solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  border-top: var(--spinner-thickness) solid var(--primary-color);
+  border-right: var(--spinner-thickness) solid rgba(254, 44, 85, 0.3);
+  border-bottom: var(--spinner-thickness) solid rgba(254, 44, 85, 0.3);
+  width: var(--spinner-size);
+  height: var(--spinner-size);
+  animation: spin var(--spinner-speed) linear infinite;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+.loader-text {
+  color: var(--text-color);
+  font-size: 0.9rem;
+  max-width: 200px;
+  line-height: 1.4;
+  opacity: 0.8;
+}
+
+/* أنواع إضافية من المؤشرات */
+.loading-dots {
+  display: flex;
+  gap: 8px;
+  
+  .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    opacity: 0.3;
+    animation: pulse 1.4s infinite ease-in-out;
+    
+    &:nth-child(1) { animation-delay: 0s; }
+    &:nth-child(2) { animation-delay: 0.2s; }
+    &:nth-child(3) { animation-delay: 0.4s; }
+  }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(0.6); opacity: 0.3; }
+  50% { transform: scale(1); opacity: 1; }
+}
