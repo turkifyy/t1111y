@@ -1,0 +1,91 @@
+# ملف .gitignore المتكامل للمشروع
+
+### ملفات النظام ###
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+### البيئات والتهيئات ###
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+.firebase
+.firebaserc
+
+### التبعيات ###
+node_modules/
+jspm_packages/
+.bower/
+*.pem
+
+### الاختبارات ###
+coverage/
+.nyc_output/
+*.lcov
+
+### البناء ###
+dist/
+build/
+.out/
+.next/
+.serverless/
+.temp/
+
+### Firebase ###
+.firebase/
+firebase-debug.log
+firebase-export.json
+
+### محررات الأكواد ###
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+### أنظمة التحكم بالإصدار ###
+.git/
+.gitattributes
+.gitkeep
+
+### أنظمة التشغيل ###
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+### التبعيات المحددة ###
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+### ملفات التطوير ###
+.eslintcache
+.stylelintcache
+*.tmp
+*.bak
+*.patch
+
+### ملفات الوسائط ###
+*.mp4
+*.mov
+*.avi
+*.mkv
+
+### ملفات التهيئة المخصصة ###
+src/config.local.js
+src/firebase/config.local.js
+
+### ملفات التطوير المحلية ###
+.local-*
+*.local
+
+### استثناءات خاصة بالمشروع ###
+!.env.example
+!.firebaserc.example
