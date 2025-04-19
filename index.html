@@ -23,6 +23,11 @@
     
     <!-- Firebase SDK (Dynamic Loading Recommended) -->
     <script type="module" src="/src/firebase-loader.js"></script>
+      <!-- Preload Critical Resources -->
+  <link rel="preload" href="src/styles/main.scss" as="style">
+  <link rel="preload" href="src/main.js" as="script">
+      <!-- CSS -->
+  <link rel="stylesheet" href="src/styles/main.scss">
 </head>
 <body>
     <!-- Connection Banner -->
@@ -171,5 +176,7 @@
     
     <!-- Toast Container -->
     <div class="toast-container" id="toastContainer"></div>
+     <!-- JavaScript -->
+  <script defer src="src/main.js"></script>
 </body>
 </html>
