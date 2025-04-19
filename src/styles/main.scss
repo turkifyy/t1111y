@@ -1,0 +1,109 @@
+/* ========================
+   #MAIN STYLES ENTRY POINT
+   ======================== */
+
+/* ------------
+   Base Styles
+   ------------ */
+@import 'base/variables';
+@import 'base/reset';
+@import 'base/typography';
+@import 'base/base';
+
+/* ------------
+   Layout
+   ------------ */
+@import 'layout/container';
+@import 'layout/grid';
+
+/* ------------
+   Components
+   ------------ */
+// Navigation
+@import 'components/header';
+@import 'components/navigation';
+
+// Video Components
+@import 'components/video-player';
+@import 'components/video-actions';
+@import 'components/video-info';
+
+// UI Components
+@import 'components/auth-modal';
+@import 'components/profile';
+@import 'components/notifications';
+@import 'components/admin-dashboard';
+@import 'components/toast';
+@import 'components/loading';
+@import 'components/comments';
+@import 'components/modals';
+
+/* ------------
+   Utilities
+   ------------ */
+@import 'utilities/animations';
+@import 'utilities/mixins';
+@import 'utilities/helpers';
+
+/* ------------
+   Responsive Styles
+   ------------ */
+
+// Tablet and Larger
+@media (min-width: 768px) {
+  .video-item {
+    max-width: 450px;
+    margin: 0 auto;
+    height: calc(100vh - var(--header-height));
+  }
+  
+  .video-info {
+    max-width: 60%;
+    bottom: 100px;
+  }
+
+  .video-feed {
+    height: calc(100vh - var(--header-height));
+  }
+}
+
+// Desktop
+@media (min-width: 1024px) {
+  .video-item {
+    max-width: 500px;
+  }
+}
+
+// Landscape Orientation
+@media (orientation: landscape) {
+  .video-item {
+    height: calc(100vh - var(--header-height));
+  }
+  
+  .video-feed {
+    height: calc(100vh - var(--header-height));
+  }
+
+  .bottom-nav {
+    display: none;
+  }
+}
+
+// Reduced Motion
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+// Dark Mode
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-color: #f0f0f0;
+    --text-secondary: #b0b0b0;
+    --bg-color: #121212;
+    --card-bg: #1e1e1e;
+  }
+}
