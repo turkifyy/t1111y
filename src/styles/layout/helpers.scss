@@ -1,0 +1,95 @@
+// Connection Banner
+.connection-banner {
+  --banner-height: 50px;
+  
+  position: fixed;
+  top: var(--header-height);
+  left: 0;
+  right: 0;
+  background: #ff4444;
+  color: white;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  z-index: var(--z-index-banner, 1100);
+  transform: translateY(calc(-1 * var(--banner-height)));
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+  aria-live: "assertive";
+
+  &.show {
+    transform: translateY(0);
+  }
+
+  // للشاشات الكبيرة
+  @media (min-width: 768px) {
+    top: 0;
+    left: 0;
+    right: auto;
+    width: auto;
+    border-radius: 0 0 8px 0;
+  }
+}
+
+// Visibility Helpers
+.hidden {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+// Text Helpers
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-primary {
+  color: var(--primary-color);
+}
+
+.text-secondary {
+  color: var(--secondary-color);
+}
+
+// Spacing Helpers
+.mt-auto {
+  margin-top: auto;
+}
+
+.mb-auto {
+  margin-bottom: auto;
+}
+
+// Responsive Helpers
+.mobile-only {
+  @media (min-width: 768px) {
+    display: none !important;
+  }
+}
+
+.desktop-only {
+  @media (max-width: 767px) {
+    display: none !important;
+  }
+}
