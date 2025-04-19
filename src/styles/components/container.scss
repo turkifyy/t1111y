@@ -1,0 +1,40 @@
+.main-container {
+  --container-padding: 0px;
+  
+  position: relative;
+  padding-top: var(--header-height);
+  padding-bottom: calc(var(--nav-height) + var(--safe-area-inset-bottom));
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow-x: hidden;
+  flex: 1;
+  contain: layout;
+  will-change: scroll-position;
+  background: var(--bg-color);
+  role: "main";
+
+  /* للصفحات ذات المحتوى الطويل */
+  &.scrollable {
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+      background: var(--primary-color);
+      border-radius: 3px;
+    }
+  }
+
+  /* للصفحات بدون تنقل سفلي */
+  &.no-bottom-nav {
+    padding-bottom: 0;
+  }
+
+  /* للصفحات بدون رأس */
+  &.no-header {
+    padding-top: 0;
+  }
+}
